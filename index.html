@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Odpočet</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+    }
+    #countdown {
+      font-size: 48px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h1>Do milostného vztahu Kájíčka a Vítečka zbývá:</h1>
+  <div id="countdown"></div>
+
+  <script>
+    // Nastavení pevného cílového data a času (1. ledna 2026 00:00)
+    const targetDate = new Date("2026-10-22T21:00:00").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const timeDifference = targetDate - now;
+
+      // Převod časového rozdílu
+      const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+      // Aktualizace textu na stránce
+      document.getElementById('countdown').textContent = `${days} dnů ${hours} hodin ${minutes} minut ${seconds} sekund`;
+
+      // Když čas vyprší
+      if (timeDifference < 0) {
+        document.getElementById('countdown').textContent = "Čas vypršel!";
+      }
+    }
+
+    // Aktualizuj odpočet každou sekundu
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
