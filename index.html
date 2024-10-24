@@ -35,7 +35,7 @@
       const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
 
       // Aktualizace textu na stránce
-      document.getElementById('countdown').textContent = `${days}, dnů ${hours} hodin ${minutes} minut ${seconds} sekund`;
+      document.getElementById('countdown').textContent = `${days}, dnů<br> ${hours} hodin ${minutes} minut ${seconds} sekund`;
 
       // Když čas vyprší
       if (timeDifference < 0) {
